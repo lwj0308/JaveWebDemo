@@ -1,0 +1,119 @@
+.wrapper {
+    width: 980px;
+    margin: 100px auto;
+    border: 1px solid blue;
+    border-radius: 10px;
+}
+
+.nbsp {
+    width: 380px;
+
+}
+.bd .error-tips{
+    display: none;
+}
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+h2 {
+    font-weight: 400;
+    padding: 10px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: white;
+    background-color: blue;
+    border-radius: 10px 10px 0 0;
+}
+
+.bd ul {
+    padding: 0 10px;
+}
+
+.bd li {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.bd label.left {
+    width: 380px;
+    text-align: right;
+    line-height: 30px;
+}
+
+.bd input {
+    border: 1px solid #ccc;
+    padding: 0 10px;
+}
+
+.bd input,
+.bd select,
+.bd .phone-select {
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+
+}
+
+.bd span {
+    margin-left: 5px;
+    font-size: 12px;
+    color: orange;
+    line-height: 30px;
+}
+
+.bd li:nth-child(2) span {
+    width: 40px;
+    height: 5px;
+    vertical-align: middle;
+    display: inline-block;
+    background-color: red;
+    border-radius: 5px;
+}
+
+.bd .line {
+    height: 1px;
+    border: 1px dashed #ccc;
+}
+
+.bd .phone-select {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bd #phoneNum,
+.bd #phoneNum-list {
+    width: 99px;
+}
+
+.bd .checkboxWrapper {
+    display: flex;
+}
+
+
+.bd #allow {
+    width: auto;
+    text-align: right;
+}
+
+.bd .allow-tips {
+    margin-left: 10px;
+    flex: 1;
+}
+
+.bd .next-wrapper {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.bd #next-step {
+    display: inline-block;
+    padding: 10px;
+    width: 150px;
+    line-height: 30px;
+    height: 50px;
+    background-color: gold;
+    border-radius: 10px;
+}

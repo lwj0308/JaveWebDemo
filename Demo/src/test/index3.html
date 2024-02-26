@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        .box {
+
+            text-align: center;
+        }
+
+        .box2::after {
+            overflow: hidden;
+            clear: both;
+        }
+
+        .box2 {
+            height: 40px;
+        }
+
+        ul {
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40px;
+            transform: translateX(100px);
+        }
+        ul:hover{
+           color: yellow;
+            transform: translateX(10px);
+        }
+
+
+        li {
+            float: left;
+            width: 50px;
+            text-align: center;
+        }
+
+        a {
+            font-size: 14px;
+            width: 50px;
+            line-height: 30px;
+            display: block;
+
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img src="images/logo.gif" alt="1">
+</div>
+<div class="box2">
+    <ul>
+        <li><a href="#">新闻</a></li>
+        <li><a href="#">网页</a></li>
+        <li><a href="#">贴吧</a></li>
+        <li><a href="#">知道</a></li>
+        <li><a href="#">音乐</a></li>
+        <li><a href="#">图片</a></li>
+        <li><a href="#">视频</a></li>
+        <li><a href="#">地图</a></li>
+    </ul>
+</div>
+</body>
+</html>

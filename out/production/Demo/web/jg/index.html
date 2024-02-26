@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const [max, min, ...a] = [100, 200, 300, 100]
+    console.info(max)
+    console.info(min)
+    console.info(a[0])
+
+    let c = 1
+    let b = 2;
+    [c, b] = [b, c]
+
+    const [hr, lx, mi, fz] = ['海尔', '联想', '小米', '方正']
+    console.info(hr)
+    console.info(lx)
+    console.info(mi)
+    console.info(fz)
+
+    // let [max1=0,min1=0,g=0] = [100,60]
+    let [max1 = 0, min1 = 0, , g = 0] = [100, 60, 100, 200]
+
+
+    // const user = {uname: 123, age: 18}
+    // const {uname:name2,age} = user
+    // console.info(name2)
+    // console.info(age)
+
+    const user2 = [{uname: 123, age: 18}]
+    const [{uname,age}] = user2
+    console.info(uname)
+    console.info(age)
+
+/*    const pig = {name:'pe',age:5}
+    const {name,age}=pig*/
+
+</script>
+</body>
+</html>

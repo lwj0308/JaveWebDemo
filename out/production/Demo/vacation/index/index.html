@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="../css/iconfont.css">
+</head>
+
+<body>
+
+    <div >
+
+        <div class="header">
+            <div class="header-con">
+                <h1 class="logo">
+                    <a href="#">logo</a>
+                </h1>
+
+                <div class="right">
+                    <!-- 搜索条 -->
+                    <div class="search" style="width: 380px;">
+                        <div class="text" style="width: 350px;">
+                            <input type="text" placeholder="搜索车票、餐饮、常旅客、相关规章">
+                        </div>
+                        <!-- 按钮 -->
+                        <a class="search-btn" href="#">
+                            <i class="icon-search icon">
+
+                            </i>
+                        </a>
+                    </div>
+
+                    <!-- 菜单 -->
+                    <ul class="menu">
+                        <li class="menu-item" onclick="alert('111')">
+                            <a href="#" class="menu-item-nav">无障碍</a>
+                        </li>
+                        <li class="menu-item menu-line">|</li>
+                        <li class="menu-item">
+                            <a href="#" class="menu-item-nav">爱心版</a>
+                        </li>
+                        <li class="menu-item menu-line">|</li>
+                        <li class="menu-item">
+                            <a href="#" class="menu-item-nav">English</a>
+                        </li>
+                        <li class="menu-item menu-line">|</li>
+                        <li class="menu-item">
+                            <a href="#" class="menu-item-nav">我的12306</a>
+                        </li>
+                        <li class="menu-item menu-line">|</li>
+                        <li class="menu-item menu-login">
+                            <a href="#">登录</a>
+                            <a href="#">注册</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="nav-box">
+            <ul class="nav-box-list">
+                <li class="nav-item nav-item-w1 nav-item-home">
+                    <a href="#">首页</a>
+                    <div class="home-search">
+                        <ul class="left-index">
+                            <li class="active"><a href="#"><i class="icon icon-huochepiao"></i>车票</a></li>
+                            <li><a href="#"><i class="icon icon-cycx"></i>常用查询</a></li>
+                            <li><a href="#"><i class="icon icon-dingcan"></i>订餐</a></li>
+                        </ul>
+                        <div class="right-index">
+                            <div class="search-main-item">
+                                <ul class="item-hd">
+                                    <li class="active"><a href="#"><i
+                                            class="icon icon-dancheng"></i>单程</a></li>
+                                    <li><a href="#"><i class="icon icon-wangfan"></i>往返</a></li>
+                                    <li><a href="#"><i class="icon icon-huancheng"></i>中转换乘</a></li>
+                                    <li><a href="#"><i class="icon icon-chepiao"></i>退改签</a></li>
+                                </ul>
+                                <div class="item-bd">
+                                    <div class="bd-group">
+                                        <div class="form-item">
+                                            <label for="start-text">出发地
+
+                                            </label>
+                                            <input type="text" placeholder="简拼/全拼/汉字" id="start-text" class="user_input">
+                                        </div>
+                                        <div class="form-item">
+                                            <label for="end-text">到达地
+                                            </label>
+                                            <input type="text" placeholder="简拼/全拼/汉字" id="end-text" class="user_input">
+                                        </div>
+                                        <div class="change">
+                                            <i class="icon icon-qiehuan"></i>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-item">
+                                        <label for="stat-time">出发日期
+                                        </label>
+                                        <input type="date" name="" id="stat-time" class="user_input">
+                                    </div>
+                                    <div class="select_stu_car">
+                                        <ul>
+                                            <li><label for="stu" style="display: inline-block">学生</label><input type="checkbox" name="" id="stu"></li>
+                                            <li><label for="car">高铁/动车</label><input type="checkbox" name="" id="car"></li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="button">
+                                        <a href="#">查询</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-main-item"></div>
+                            <div class="search-main-item"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item nav-item-w1 "><a href="#">车票 <i class="icon icon-down"></i></a>
+                    <div class="sub-menu">
+                        <div>
+                            <h4 class="sub-tit">购买</h4>
+                            <ul>
+                                <li><a href="#" data-id="0">单程</a></li>
+                                <li><a href="#" data-id="1">往返</a></li>
+                                <li><a href="#" data-id="2">中转换乘</a></li>
+                                <li><a href="#" data-id="3">计次·定期票</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="sub-tit">变更</h4>
+                            <ul>
+                                <li>退票</li>
+                                <li>改签</li>
+                                <li>变更到站</li>
+                                <li></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="sub-tit border-none">更多</h4>
+                            <ul>
+                                <li>中铁银通卡</li>
+                                <li class="border-none">广九直通车</li>
+                                <li>国际列车</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="#">团购服务<i class="icon icon-down"></i></a></li>
+                <li class="nav-item"><a href="#">会员服务<i class="icon icon-down"></i></a></li>
+                <li class="nav-item"><a href="#">站车服务<i class="icon icon-down"></i></a></li>
+                <li class="nav-item"><a href="#">商旅服务<i class="icon icon-down"></i></a></li>
+                <li class="nav-item"><a href="#">出行指南<i class="icon icon-down"></i></a></li>
+                <li class="nav-item"><a href="#">信息查询<i class="icon icon-down"></i></a></li>
+
+            </ul>
+        </div>
+        <div id="banner-box">
+            <!-- 放图片-->
+            <div id="banner-img">
+                <a href="#">
+                    <!-- 仅放一张图片，通过JS来改变图片地址即可-->
+                    <img src="../img/banner0.jpg" alt=""/>
+                </a>
+            </div>
+            <!-- 放底部圆点-->
+            <div id="selector">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div id="wrapper">
+            <ul class="top_list">
+                <li>
+                    <div class="top_list_div">
+                        <div class="top_icon icon1">
+                        </div>
+                        <div>
+                            重点旅客预约
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="top_icon icon2">
+
+                    </div>
+                    <div>
+                        遗失物品查找
+                    </div>
+                </li>
+                <li>
+                    <div class="top_icon icon3">
+
+                    </div>
+                    <div>
+                        约车服务
+                    </div>
+                </li>
+                <li>
+                    <div class="top_icon icon4">
+
+                    </div>
+                    <div>
+                        便民托运
+                    </div>
+                </li>
+                <li>
+                    <div class="top_icon icon5">
+
+                    </div>
+                    <div>
+                        车站引导
+                    </div>
+                </li>
+                <li>
+                    <div class="top_icon icon6">
+
+                    </div>
+                    <div>
+                        站车风采
+                    </div>
+                </li>
+
+                <li id="last">
+                    <div class="top_icon icon7">
+
+                    </div>
+                    <div id="test">
+                        用户反馈
+                    </div>
+                </li>
+
+            </ul>
+
+            <div class="content">
+                <ul class="content_list">
+                    <li>
+                        <img src="../img/banner0.jpg" alt="1"/>
+                    </li>
+                    <li>
+                        <img src="../img/banner1.jpg" alt="1"/>
+                    </li>
+                    <li>
+                        <img src="../img/banner2.jpg" alt="1"/>
+                    </li>
+                    <li>
+                        <img src="../img/banner3.jpg" alt="1"/>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="section">
+                <div class="section_tit">
+                    <h3 class="section-h">
+                        铁路旅游
+                    </h3>
+                    <a href="#" class="section-a">更多</a>
+                </div>
+
+                <ul class="travel-train-list">
+                    <li><a href="#">
+                        <div class="pic">
+                            <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/243945e6-c45d-4870-9cf5-77e488068646_product_W572_H370.jpg"
+                                 alt="">
+                        </div>
+                        <div class="info">
+                            <h3 class="info-name">“环西部火车游” 高品质旅游版专线列车</h3>
+                            <div class="price-txt">
+                                <i class="rmb">￥</i> 2560
+                            </div>
+                        </div>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="pic">
+                            <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/fcd7173f-7651-46e7-a126-bdc199e1f6f7_product_W572_H370.jpg"
+                                 alt="">
+                        </div>
+                        <div class="info">
+                            <h3 class="info-name">“环西部火车游” 高品质旅游版专线列车</h3>
+                            <div class="price-txt">
+                                <i class="rmb">￥</i> 2560
+                            </div>
+                        </div>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="pic">
+                            <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/b0c76b21-531b-4af4-a607-cf5672c72ded_product_W572_H370.jpg"
+                                 alt="">
+                        </div>
+                        <div class="info">
+                            <h3 class="info-name">“环西部火车游” 高品质旅游版专线列车</h3>
+                            <div class="price-txt">
+                                <i class="rmb">￥</i> 2560
+                            </div>
+                        </div>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="pic">
+                            <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/8b36f9a7-f780-4e71-b719-9300109a9ff2_product_W572_H370.jpg"
+                                 alt="">
+                        </div>
+                        <div class="info"><h3 class="info-name">“环西部火车游” 高品质旅游版专线列车</h3>
+                            <div class="price-txt">
+                                <i class="rmb">￥</i> 2560
+                            </div>
+                        </div>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="pic">
+                            <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/1716878f-79a2-4db1-af8c-b9c2039f0b3c_product_W572_H370.jpg"
+                                 alt="">
+                        </div>
+                        <div class="info"><h3 class="info-name">“环西部火车游” 高品质旅游版专线列车</h3>
+                            <div class="price-txt">
+                                <i class="rmb">￥</i> 2560
+                            </div>
+                        </div>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="pic">
+                            <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/6d77d0ea-53d0-4518-b7e9-e53795b4920c_product_W572_H370.jpg"
+                                 alt="">
+                        </div>
+                        <div class="info"><h3 class="info-name">“环西部火车游” 高品质旅游版专线列车</h3>
+                            <div class="price-txt">
+                                <i class="rmb">￥</i> 2560
+                            </div>
+                        </div>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="pic">
+                            <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/c7c03732-3c86-4308-aea7-df747d4999e8_product_W572_H370.jpg"
+                                 alt="">
+                        </div>
+                        <div class="info"><h3 class="info-name">“环西部火车游” 高品质旅游版专线列车</h3>
+                            <div class="price-txt">
+                                <i class="rmb">￥</i> 2560
+                            </div>
+                        </div>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="pic">
+                            <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/d9ae79de-2f3f-4e9f-ad6e-bdc291dda92a_product_W572_H370.jpg"
+                                 alt="">
+                        </div>
+                        <div class="info"><h3 class="info-name">“环西部火车游” 高品质旅游版专线列车</h3>
+                            <div class="price-txt">
+                                <i class="rmb">￥</i>
+                                2560
+                            </div>
+                        </div>
+                    </a></li>
+                </ul>
+            </div>
+
+            <div class="new">
+
+                <div class="new-tab">
+                    <ul class="new-list">
+                        <li><a href="#">最新发布</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">信用信息</a></li>
+                    </ul>
+                </div>
+
+                <div class="new-item">
+                    <ul class="new-item-list">
+                        <li><a href="#">关于优化铁路车票改签规则的公告</a><span>2024-01-11</span></li>
+                        <li><a href="#">外国护照身份核验使用说明</a><span>2024-01-11</span></li>
+                        <li><a href="#">铁路旅客禁止、限制携带和托运物品目录</a><span>2024-01-11</span></li>
+                        <li><a href="#">公 告</a><span>2024-01-11</span></li>
+                        <li><a href="#">候补购票操作说明</a><span>2024-01-11</span></li>
+                        <li><a href="#">公 告</a><span>2024-01-11</span></li>
+                        <li><a href="#">关于调整互联网、电话订票起售时间的公告</a><span>2024-01-11</span></li>
+                        <li>
+                            <a href="#">中国铁路上海局集团有限公司关于2024年2月5日-2024年3月5日增开部分旅客列车的公告</a>
+                            <span>2024-01-11</span>
+                        </li>
+                        <li>
+                            <a href="#">中国铁路广州局集团有限公司关于2024年2月2日至2月28日期间增开部分旅客列车的公告</a>
+                            <span>2024-01-11</span>
+                        </li>
+                        <li><a href="#">中国铁路成都局集团有限公司关于2024年1月29日至2月26日加开部分列车的公告</a>
+                            <span>2024-01-11</span>
+                        </li>
+                    </ul>
+                    <div class="new-more">更多</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-one">
+                <div class="footer-link">
+                    <h2 class="link-tit">友情链接</h2>
+                    <ul class="foot-links-list">
+                        <li><a href="#"><img src="../img/link02.png" alt=""></a></li>
+                        <li><a href="#"><img src="../img/link03.png" alt=""></a></li>
+                        <li><a href="#"><img src="../img/link04.png" alt=""></a></li>
+                        <li><a href="#"><img src="../img/link05.png" alt=""></a></li>
+                    </ul>
+                </div>
+                <ul class="footer-code-list">
+                    <li><h2>中国铁路官方</h2>
+                        <div class="pic-wrapper"><img src="../img/zgtlwx.png" alt=""></div>
+                    </li>
+                    <li><h2>中国铁路官方</h2>
+                        <div class="pic-wrapper"><img src="../img/zgtlwx.png" alt=""></div>
+                    </li>
+                    <li><h2>中国铁路官方</h2>
+                        <div class="pic-wrapper"><img src="../img/zgtlwx.png" alt=""></div>
+                    </li>
+                    <li><h2>中国铁路官方</h2>
+                        <div class="pic-wrapper"><img src="../img/zgtlwx.png" alt="">
+                            <div class="tips">
+
+                                官方APP下载，目前铁路未授权其他网站或APP开展类似服务内容，敬请广大用户注意。
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-two">
+                <p>
+                <span class="mr">
+                    版权所有©2008-2023
+                </span>
+                    <span class="mr">
+                中国铁道科学研究院集团有限公司
+            </span>
+                    <span>
+                技术支持：铁旅科技有限公司
+            </span>
+                </p>
+                <p>
+                    <span class="mr">京公网安备 11010802038392号</span>
+                    <span class="mr">|</span><span
+                        class="mr">京ICP备05020493号-4</span>
+                    <span class="mr">|</span><span
+                        class="mr">ICP证：京B2-20202537</span>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="fixed-right">
+            <ul class="fixed-right-menu">
+                <li class="menu-item"><a href="#">
+                    <h4>联系客服</h4>
+                </a></li>
+                <li class="menu-item"><a href="#">
+                    <h4>联系客服</h4>
+                </a></li>
+                <li class="menu-item"><a href="#">
+                    <h4>联系客服</h4>
+                </a></li>
+                <li class="menu-item">
+                    <a href="#">
+                        <h4>联系客服</h4>
+                    </a></li>
+            </ul>
+        </div>
+
+
+
+    </div>
+
+<script src="index.js"></script>
+</body>
+
+</html>

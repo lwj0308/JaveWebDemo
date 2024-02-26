@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        body {
+            background: #8A8A8A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            outline: none;
+        }
+
+        ul li {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .wrapper {
+            padding: 10px;
+            background-color: white;
+            width: 300px;
+            margin: 50px auto;
+            border: 1px crimson solid;
+            border-radius: 10px;
+            text-align: center;
+        }
+        button{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <form action="index.html">
+
+        <ul>
+            <li><label>
+                <input type="text" placeholder="账号" id="acc">
+            </label>
+            </li>
+            <li>
+                <label>
+                    <input type="password" placeholder="密码" id="pwd">
+                </label>
+            </li>
+            <li>
+                <label>
+                <input type="text" placeholder="1234" id="code"></label>
+            </li>
+            <li>
+                    <button id="btn_login" type="submit">登录</button>
+            </li>
+        </ul>
+
+
+    </form>
+</div>
+<script src="login.js"></script>
+</body>
+</html>

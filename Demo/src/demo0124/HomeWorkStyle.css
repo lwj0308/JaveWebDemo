@@ -1,0 +1,58 @@
+table {
+    border: darkgoldenrod 10px solid;
+    border-radius: 10px;
+}
+
+th, td {
+    border: black 1px solid;
+    text-align: center;
+    width: 80px;
+    height: 50px;
+}
+
+#tb_foot {
+    height: 30px;
+}
+
+.tb_outer {
+    background-color: mediumseagreen;
+}
+
+body {
+    background-image: url("../../img/1.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#aboutTitle {
+    display: flex;
+    justify-content: center;
+}
+
+.span_title {
+
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: red;
+    /*将span作为flex容器显示*/
+    display: flex;
+    /*设置flex容器内元素在水平方向上的对齐方式。*/
+    justify-content: center;
+    /*用于在flex容器中设置项目在垂直方向上的对齐方式*/
+    align-items: center;
+    font-size: 24px;
+    color: #333;
+    margin: 10px;
+}
+
+#outWrap {
+    margin-top: 50px;
+}
+
+
+
+

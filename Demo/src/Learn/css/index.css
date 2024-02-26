@@ -1,0 +1,435 @@
+/*多处使用*/
+.wrapper {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+body {
+    background-color: #f3f5f7;
+}
+
+/*头部*/
+.header {
+    height: 100px;
+    background-color: white;
+}
+
+.header .wrapper {
+    padding-top: 29px;
+    display: flex;
+}
+
+/*logo*/
+.logo a {
+    /*转成这个比较好*/
+    display: block;
+    width: 195px;
+    height: 41px;
+    font-size: 0;
+    background-image: url(../images/logo.png);
+}
+
+/*导航*/
+.nav {
+    margin-left: 102px;
+}
+
+.nav ul {
+    display: flex;
+    /*justify-content: space-between;*/
+}
+
+.nav li {
+    margin-right: 24px;
+}
+
+.nav li a {
+    display: block;
+    padding: 6px 8px;
+    line-height: 27px;
+    font-size: 19px;
+}
+
+/*以后加个类名有下划线*/
+.nav li .active,
+.nav li a:hover {
+    border-bottom: 2px solid #00a4ff;
+}
+
+/*搜索*/
+.search {
+    display: flex;
+    width: 412px;
+    height: 40px;
+    margin-left: 64px;
+    padding-left: 19px;
+    padding-right: 12px;
+    background-color: #f3f5f7;
+    border-radius: 20px;
+}
+
+.search input {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.search input::placeholder {
+    font-size: 14px;
+    /*line-height: 20px;*/
+    color: #999999;
+}
+
+.search a {
+    align-self: center;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/search.png);
+}
+
+/*用户区*/
+.user {
+    margin-left: 32px;
+    margin-top: 4px;
+}
+
+.user a {
+    display: flex;
+}
+
+.user img {
+    /*中线对齐*/
+    /*vertical-align: middle;*/
+    margin-right: 7px;
+
+}
+
+.user span {
+    width: 80px;
+    font-size: 16px;
+    line-height: 30px;
+    /*省略号*/
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #666666;
+}
+
+/*轮播图*/
+.banner-wrapper {
+    height: 420px;
+    background-color: #0092cb;
+}
+
+.banner-wrapper .wrapper {
+    height: 420px;
+    display: flex;
+    justify-content: space-between;
+    background-image: url(../uploads/banner.png);
+}
+
+.banner-wrapper .left {
+    width: 191px;
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, 0.42);
+}
+
+.banner-wrapper .left a {
+    display: block;
+    height: 46px;
+    background: url(../images/right.png) no-repeat right center;
+    line-height: 46px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.banner-wrapper .left a:hover {
+    background-image: url(../images/right-hover.png);
+    color: #00a4ff;
+}
+
+.banner-wrapper .right {
+    width: 218px;
+    height: 305px;
+    background-color: #209dd5;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.banner-wrapper .right h3 {
+    height: 48px;
+    margin-left: 14px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 48px;
+    color: #fff;
+}
+
+.banner-wrapper .right .content {
+    height: 257px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.banner-wrapper .right dl {
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.banner-wrapper .right dt {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.banner-wrapper .right dd {
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.banner-wrapper .right dd span {
+    color: #00a4ff;
+}
+
+.banner-wrapper .right dd strong {
+    font-weight: 400;
+    color: #7d7d7d;
+}
+
+.banner-wrapper .right .content a {
+    display: block;
+    width: 190px;
+    height: 32px;
+    background-color: #00a4ff;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 32px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.recommend {
+    display: flex;
+    height: 60px;
+    padding: 0 20px;
+    margin-top: 11px;
+    line-height: 60px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(211, 211, 211, 0.5);
+}
+
+.recommend h3 {
+    font-size: 18px;
+
+    font-weight: 400;
+    color: #00a4ff;
+}
+
+.recommend ul {
+    display: flex;
+    /*除了两端的内容，剩余都给ul*/
+    flex: 1;
+}
+
+.recommend ul li a {
+    padding: 0 24px;
+    border-right: 1px solid #e0e0e0;
+    font-size: 18px;
+}
+
+.recommend ul li:last-child a {
+    border-right: none;
+}
+
+.recommend .modify {
+    font-size: 16px;
+    color: #00a4ff;
+}
+
+/*精品课程*/
+.course {
+    margin-top: 15px;
+}
+
+/*标题 - 公共类，共用*/
+
+.hd {
+    display: flex;
+    justify-content: space-between;
+    /*计算行高替换默认行高，减少误差*/
+    height: 60px;
+    line-height: 60px;
+}
+
+.hd h3 {
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.hd .more {
+    padding-right: 20px;
+    background: url(../images/more.png) no-repeat right center;
+    font-size: 14px;
+    color: #999;
+}
+
+/*课程 - 公共类，共用*/
+.bd ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.bd li {
+    width: 228px;
+    height: 271px;
+    margin-bottom: 14px;
+
+}
+
+.bd li .pic {
+    height: 156px;
+}
+
+.bd li .text {
+    height: 115px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.bd li .text h4 {
+    height: 40px;
+    margin-bottom: 13px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.bd li .text p {
+    font-size: 14px;
+    color: #999999;
+    line-height: 20px;
+
+}
+
+.bd li .text p span {
+    color: #fa6400;
+}
+
+.bd li .text p i {
+    font-style: normal;
+}
+
+/*前端*/
+.hd ul {
+    display: flex;
+}
+
+.hd li {
+    margin-right: 60px;
+    font-size: 16px;
+}
+
+.hd li .active {
+    color: #00a4ff;
+}
+
+.bd {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bd .left {
+    width: 228px;
+    /*div高度大于img，还有其他解决方式*/
+    font-size: 0;
+}
+
+.bd .right {
+    width: 957px;
+    background-color: palegoldenrod;
+}
+
+.bd .right .top {
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+/*版权*/
+.footer {
+    margin-top: 60px;
+    padding: 60px;
+    height: 273px;
+    background-color: #fff;
+}
+
+.footer .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .left {
+    width: 440px;
+}
+
+.footer .left p {
+    margin: 24px 0 14px 0;
+    font-size: 12px;
+    line-height: 17px;
+    color: #666;
+}
+
+.footer .left .download {
+    display: block;
+    width: 120px;
+    height: 36px;
+    font-size: 16px;
+    line-height: 34px;
+    text-align: center;
+    color: #00a4ff;
+    border: 1px solid #00a4ff;
+}
+
+.footer .right {
+    display: flex;
+}
+
+.footer .right dl {
+    margin-left: 130px;
+
+}
+
+.footer .right dt {
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.footer .right dd a {
+    font-size: 14px;
+    line-height: 24px;
+    color: #666666;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

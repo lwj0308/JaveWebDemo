@@ -1,0 +1,90 @@
+#wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+    padding: 0 5px;
+}
+
+ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.top_list li {
+    padding: 35px 0;
+    float: left;
+    width: 14.2%;
+    height: 136px;
+    line-height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    background-image: url("../img/line01@2x.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.top_list #last{
+    background: none;
+}
+
+.top_list_div {
+    height: 66px;
+}
+
+.top_icon {
+    width: 36px;
+    height: 36px;
+    margin: 0 auto 5px;
+    background-image: url("../img/icon.png");
+    background-size: cover;
+}
+
+.icon1 {
+    background-position: 0 -40px;
+}
+
+.icon2 {
+    background-position: 0 -200px;
+}
+
+.icon3 {
+    background-position: 0 -120px;
+}
+
+.icon4 {
+    background-position: 0 -160px;
+}
+
+.icon5 {
+    background-position: 0 -80px;
+}
+
+.icon6 {
+    background-position: 0 -240px;
+}
+
+.icon7 {
+    background-position: 0 -320px;
+}
+
+
+.top_list {
+    font-size: 18px;
+}
+
+/*大图*/
+
+.content_list li {
+    float: left;
+    width: 590px;
+    height: 200px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+
+img {
+    width: 590px;
+    height: 200px;
+}
