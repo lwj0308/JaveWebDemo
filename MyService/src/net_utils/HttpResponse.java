@@ -43,10 +43,10 @@ public class HttpResponse {
                 headers.put("Content-Type", "text/html;charset=utf-8");
                 break;
             case "css":
-                headers.put("Content-Type", "text/css");
+                headers.put("Content-Type", "text/css;charset=utf-8");
                 break;
             case "js":
-                headers.put("Content-Type", "application/javascript");
+                headers.put("Content-Type", "application/javascript;charset=utf-8");
                 break;
             case "png":
                 headers.put("Content-Type", "image/png");

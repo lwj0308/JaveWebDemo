@@ -43,8 +43,8 @@ loginBtn.addEventListener('click', (ev) => {
             url: "/loginIndex",
             dataType: "text",
             data: {
-                acc: inputs[0].value,
-                pwd: inputs[1].value
+                userid: inputs[0].value,
+                password: inputs[1].value
             },
             success: response => {
                 if (response=== '登录成功'){

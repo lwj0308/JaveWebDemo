@@ -11,7 +11,7 @@ import java.sql.SQLException;
  * @version 1.0
  */
 public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/db_test";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/traindb";//traindb
     private static final String USER_NAME = "root";
     private static final String PASSWORD = "root";
     private Connection connection;

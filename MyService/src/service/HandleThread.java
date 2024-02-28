@@ -1,5 +1,6 @@
 package service;
 
+import lombok.extern.java.Log;
 import net_utils.HttpRequest;
 import net_utils.HttpResponse;
 import net_utils.HttpServlet;
@@ -17,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
+@Log
 public class HandleThread extends Thread {
     private final Socket accept;
 
@@ -31,25 +33,20 @@ public class HandleThread extends Thread {
             HttpResponse httpResponse = new HttpResponse(accept.getOutputStream());
 
             String url = httpRequest.getUrl();
-            Logutil.getInstance().getLogger().info("请求路径：" + url);
-            Logutil.getInstance().getLogger().info("请求方法：" + httpRequest.getMethod());
-            Logutil.getInstance().getLogger().info("请求数据：" + httpRequest.getBody());
+            log.info("请求路径：" + url);
+            log.info("请求方法：" + httpRequest.getMethod());
+            log.info("请求数据：" + httpRequest.getBody());
             String fileName = "MyService/webapps" + url;
             HttpServlet httpServlet = Service.servletMap.get(url);
             File file = new File(fileName);
             if (file.exists()) {//文件
 
                 if (file.isFile()) {
-                    Logutil.getInstance().getLogger().info("文件：" + fileName);
                     httpResponse.write(file);
                 }
             } else if (httpServlet != null) {
-                Logutil.getInstance().getLogger().info("业务：" + url);
-                Logutil.getInstance().getLogger().warning(httpRequest.getParams().get("acc"));
-                Logutil.getInstance().getLogger().warning(httpRequest.getParams().get("pwd"));
                 httpServlet.doService(httpRequest, httpResponse);
             } else {
-                Logutil.getInstance().getLogger().info("404：" + url);
                 httpResponse.write("404", "<h1>404<img src='img/404.png' alt=''></img></h1>");
             }
 

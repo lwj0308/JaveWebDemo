@@ -6,6 +6,7 @@ import net_utils.HttpResponse;
 import net_utils.HttpServlet;
 import servlet.LoginServlet;
 import servlet.RegisterServlet;
+import servlet.TrainNumberServlet;
 import utils.DatabaseOperations;
 
 import java.io.File;
@@ -28,6 +29,7 @@ public class Service {
             ServerSocket serverSocket = new ServerSocket(8888);
             servletMap.put("/loginIndex", new LoginServlet(databaseOperations));
             servletMap.put("/registerIndex", new RegisterServlet(databaseOperations));
+            servletMap.put("/trainquery", new TrainNumberServlet(databaseOperations));
             new LinkThread(serverSocket).start();
 
         } catch (IOException e) {

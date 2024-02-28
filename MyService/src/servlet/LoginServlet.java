@@ -20,11 +20,11 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void doGet(HttpRequest request, HttpResponse response) {
         Map<String, String> params = request.getParams();
-        String acc = params.get("acc");
-        String pwd = params.get("pwd");
-        Logutil.getInstance().getLogger().info("GET：acc" + acc + " pwd:" + pwd);
+        String acc = params.get("userid");
+        String pwd = params.get("password");
+        Logutil.getInstance().getLogger().info("GET：userid" + acc + " password:" + pwd);
 
-        ResultSet resultSet = databaseOperations.executeQuery("select * from tb_user where account=? and pwd=?", acc, pwd);
+        ResultSet resultSet = databaseOperations.executeQuery("select * from train_user where userid=? and password=?", acc, pwd);
 
         try {
             if (resultSet.next()) {

@@ -68,8 +68,8 @@ document.querySelector('#next-step').addEventListener('click', (ev) => {
             url: "/registerIndex",
             dataType: "text",
             data: {
-                acc: dataNums[0].value,
-                pwd: dataNums[1].value
+                userid: dataNums[0].value,
+                password: dataNums[1].value
             }, success: (response) => {
                 switch (response) {
                     case "账号存在":

@@ -1,13 +1,18 @@
 package net_utils;
 
+import lombok.Getter;
+import lombok.ToString;
 import utils.Logutil;
 
 import java.io.*;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@Getter
+@ToString
 public class HttpRequest {
     private String method;//请求方法
     private String url;//请求地址
@@ -65,23 +70,18 @@ public class HttpRequest {
                 int length = Integer.parseInt(lengthStr);
                 if (length > 0) {
                     try {
-                        Logutil.getInstance().getLogger().warning("body------:"+ length);
                         char[] bytes = new char[length];
-                        StringBuilder builder = new StringBuilder();
+//                        StringBuilder builder = new StringBuilder();
                         int len;
-                        Logutil.getInstance().getLogger().warning("解析前------:"+ this.url);
-                        while ((len = bf.read(bytes)) != -1){
-                            Logutil.getInstance().getLogger().warning("解析中------:"+ len);
-                            builder.append(bytes, 0, len);
-                        }
+//                        while ((len = bf.read(bytes)) != -1){
+//                            Logutil.getInstance().getLogger().warning("解析中------:"+ len);
+//                            builder.append(bytes, 0, len);
+//                        }
                         len = bf.read(bytes);
                         String string = new String(bytes, 0, len);
-                        Logutil.getInstance().getLogger().warning("body------:"+ string);
 //                        builder.append(string);
-                        this.body = builder.toString();
+                        this.body = string;
 
-                        Logutil.getInstance().getLogger().warning("解析过后------:"+ this.url);
-                        Logutil.getInstance().getLogger().warning("解析过后body------:"+ this.body);
                     } catch (IOException e) {
                        Logutil.getInstance().getLogger().warning(e.getMessage());
                     }
@@ -98,7 +98,11 @@ public class HttpRequest {
      * 解析参数
      */
     private void paramUrl() {
-        Logutil.getInstance().getLogger().warning("paramUrl------:"+ this.url);
+        try {
+            this.url = URLDecoder.decode(this.url, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
         //解析url
         https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_10176833490733708600%22%7D&n_type=-1&p_from=-1
         if (this.url.contains("?")) {
@@ -122,6 +126,11 @@ public class HttpRequest {
         if (body == null) {
             return;
         }
+        try {
+            this.body = URLDecoder.decode(this.body, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
         //body kv
         String[] strings = body.split("&");
 
@@ -131,43 +140,6 @@ public class HttpRequest {
             params.put(split[0], split[1]);
         }
 
-
-
     }
 
-    public String getMethod() {
-        return method;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getProtocol() {
-        return protocol;
-    }
-
-    public Map<String, String> getHeaders() {
-        return headers;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public Map<String, String> getParams() {
-        return params;
-    }
-
-    @Override
-    public String toString() {
-        return "HttpRequest{" +
-                "method='" + method + '\'' +
-                ", url='" + url + '\'' +
-                ", protocol='" + protocol + '\'' +
-                ", headers=" + headers +
-                ", body='" + body + '\'' +
-                ", inputStream=" + inputStream +
-                '}';
-    }
 }
