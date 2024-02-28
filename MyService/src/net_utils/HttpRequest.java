@@ -1,9 +1,9 @@
 package net_utils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import utils.Logutil;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -23,27 +23,29 @@ public class HttpRequest {
 
     public HttpRequest(InputStream inputStream) {
         this.inputStream = inputStream;
+        receive();
+        paramUrl();
     }
 
     /**
      * 接受并解析
      */
     public void receive() {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(inputStream));
+        BufferedReader bf = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
         try {
             //请求行
             String s = bf.readLine();
-            if (s == null) return;
+
+            if (s == null) return;//没有请求行
+            //解析请求行
             String[] split = s.split(" ");
             if (split.length != 3) {
                 throw new RuntimeException("请求行格式错误");
             }
             this.method = split[0];
             this.url = split[1];
-            //解析url
-            paramUrl();
-
             this.protocol = split[2];
+
             //接受头部
             while (true) {
                 s = bf.readLine();
@@ -57,22 +59,36 @@ public class HttpRequest {
                     headers.put(split[0], split[1]);
                 }
             }
-
             //body
-            if (headers.containsKey("Content-Length")) {
-                String lengthStr = headers.get("Content-Length");
-                Optional.ofNullable(lengthStr).ifPresent(it -> {
-                    if (it.isEmpty() && Integer.parseInt(it) > 0) {
-                        try {
-                            this.body = bf.readLine();
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
+            String lengthStr = headers.get("Content-Length");
+            if ( lengthStr!=null&& !lengthStr.isEmpty() ) {
+                int length = Integer.parseInt(lengthStr);
+                if (length > 0) {
+                    try {
+                        Logutil.getInstance().getLogger().warning("body------:"+ length);
+                        char[] bytes = new char[length];
+                        StringBuilder builder = new StringBuilder();
+                        int len;
+                        Logutil.getInstance().getLogger().warning("解析前------:"+ this.url);
+                        while ((len = bf.read(bytes)) != -1){
+                            Logutil.getInstance().getLogger().warning("解析中------:"+ len);
+                            builder.append(bytes, 0, len);
                         }
+                        len = bf.read(bytes);
+                        String string = new String(bytes, 0, len);
+                        Logutil.getInstance().getLogger().warning("body------:"+ string);
+//                        builder.append(string);
+                        this.body = builder.toString();
+
+                        Logutil.getInstance().getLogger().warning("解析过后------:"+ this.url);
+                        Logutil.getInstance().getLogger().warning("解析过后body------:"+ this.body);
+                    } catch (IOException e) {
+                       Logutil.getInstance().getLogger().warning(e.getMessage());
                     }
-                });
-
-
+                }
             }
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -82,6 +98,7 @@ public class HttpRequest {
      * 解析参数
      */
     private void paramUrl() {
+        Logutil.getInstance().getLogger().warning("paramUrl------:"+ this.url);
         //解析url
         https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_10176833490733708600%22%7D&n_type=-1&p_from=-1
         if (this.url.contains("?")) {
@@ -96,11 +113,24 @@ public class HttpRequest {
 
             for (String string : strings) {
                 String[] split = string.split("=");
-                if (split.length < 2) continue ;
-                params.put(split[0],split[1]);
+                if (split.length < 2) continue;
+                params.put(split[0], split[1]);
             }
 
         }
+
+        if (body == null) {
+            return;
+        }
+        //body kv
+        String[] strings = body.split("&");
+
+        for (String string : strings) {
+            String[] split = string.split("=");
+            if (split.length < 2) continue;
+            params.put(split[0], split[1]);
+        }
+
 
 
     }

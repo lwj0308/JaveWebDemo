@@ -13,112 +13,114 @@
         <h2>账户信息</h2>
         <div class="bd">
             <div class="top">
-                <ul>
-                    <li><label for="username" class="left">* 用户名：</label>
-                        <input type="text" id="username" data-num="0" placeholder="用户名设置成功后不可修改">
-                        <span>6-30位字母、数字或“_”,字母开头</span>
-                    </li>
-                    <li class="error-tips">
-                        <div class="nbsp">&nbsp;</div>
-                        <div class="error"><i class="icon icon-error">
-                        </i>用户名长度不能少于6位！
-                        </div>
-                    </li>
-                    <li><label for="password" class="left">* 登录密码：</label>
-                        <input type="text" id="password" data-num="1"
-                               placeholder="6-20位字母、数字或符号">
-                        <div><span class="red"></span>
-                            <span></span>
-                            <span></span></div>
-                    </li>
-                    <li class="error-tips">
-                        <div class="nbsp">&nbsp;</div>
-                        <div class="error"><i class="icon icon-error">
-                        </i>密码长度不能少于6位！
-                        </div>
-                    </li>
-                    <li><label for="confirm-password" class="left">* 确认密码：</label>
-                        <input type="text" id="confirm-password" data-num="2"
-                               placeholder="再次输入您的登录密码"></li>
-                    <li class="error-tips" >
-                        <div class="nbsp">&nbsp;</div>
-                        <div class="error"><i class="icon icon-error">
-                        </i>确认密码与密码不同！
-                        </div>
-                    </li>
-                    <li><label for="card-list" class="left">* 证件类型：</label>
-                        <select name="" id="card-list">
-                            <option value="1">中国居民身份证</option>
-                            <option value="1">港澳台居民居住证</option>
-                            <option value="C">港澳居民来往内地通行证</option>
-                            <option value="G">台湾居民来往大陆通行证</option>
-                            <option value="B">护照</option>
-                            <option value="H">外国人永久居留身份证</option>
-                        </select></li>
-                    <li><label for="name" class="left">* 姓名：</label>
-                        <input type="text" id="name" data-num="3"
-                               placeholder="请输入您的姓名">
-                        <span>姓名填写规则 （用于身份核验，请正确填写）</span>
-                    </li>
-                    <li class="error-tips">
-                        <div class="nbsp">&nbsp;</div>
-                        <div class="error"><i class="icon icon-error">
-                        </i>允许输入的字符串在3-30个字符之间！
-                        </div>
-                    </li>
-                    <li><label for="idCard" class="left">* 证件号码：</label>
-                        <input type="text" id="idCard" data-num="4"
-                               placeholder="请输入你的证件号码"><span>（用于身份核验，请正确填写）</span>
-                    </li>
-                    <li class="error-tips">
-                        <div class="nbsp">&nbsp;</div>
-                        <div class="error"><i class="icon icon-error">
-                        </i>请正确输入18位的证件号码！
-                        </div>
-                    </li>
-                    <li><label for="fuli-list" class="left">* 优待类型：</label>
-                        <select name="" id="fuli-list">
-                            <option value="1">成人</option>
-                            <option value="2">儿童</option>
-                            <option value="3">学生</option>
-                            <option value="4">残疾军人</option>
-                        </select></li>
-                    <li class="line">
-                    </li>
-                    <li><label for="email" class="left">* 邮箱：</label>
-                        <input type="text" id="email" data-num="5" placeholder="请正确填写邮箱地址">
-                    </li>
-                    <li class="error-tips">
-                        <div class="nbsp">&nbsp;</div>
-                        <div class="error"><i class="icon icon-error">
-                        </i>请输入有效的电子邮件地址！
-                        </div>
-                    </li>
-                    <li><label for="phoneNum-list" class="left">* 手机号码：</label>
-                        <div class="phone-select">
-                            <select name="" id="phoneNum-list">
-                                <option value="1">+86&nbsp;中国</option>
-                                <option value="2">+852&nbsp;中国香港</option>
-                                <option value="3">+853&nbsp;中国澳门</option>
-                                <option value="4">+886&nbsp;中国台湾</option>
-                            </select>
-                            <label for="phoneNum"></label><input type="text" id="phoneNum" data-num="6" placeholder="手机号码"></div>
-                        <div>
-                            <div class="error error-tips"><i class="icon icon-error">
-                            </i>您输入的手机号码不是有效的格式！
-                            </div>
-                            <span>请正确填写手机号码，稍后将向该手机号码发送短信验证码</span>
-                        </div>
-                    </li>
-                    <li >
-                        <div class="checkboxWrapper">
+                <form action="/registerIndex" method="post" enctype="application/x-www-form-urlencoded">
+                    <ul>
+                        <li><label for="username" class="left">* 用户名：</label>
+                            <input type="text" id="username" name="acc" data-num="0" placeholder="用户名设置成功后不可修改">
+                            <span>6-30位字母、数字或“_”,字母开头</span>
+                        </li>
+                        <li class="error-tips">
                             <div class="nbsp">&nbsp;</div>
-                            <input type="checkbox" name="" id="allow"><label for="allow" class="allow-tips">我已阅读并同意遵守
-                            《中国铁路客户服务中心网站服务条款》 《隐私权政策》</label></div>
-                    </li>
-                </ul>
+                            <div class="error"><i class="icon icon-error">
+                            </i>用户名长度不能少于6位！
+                            </div>
+                        </li>
+                        <li><label for="password" class="left">* 登录密码：</label>
+                            <input type="text" id="password" name="pwd" data-num="1"
+                                   placeholder="6-20位字母、数字或符号">
+                            <div><span class="red"></span>
+                                <span></span>
+                                <span></span></div>
+                        </li>
+                        <li class="error-tips">
+                            <div class="nbsp">&nbsp;</div>
+                            <div class="error"><i class="icon icon-error">
+                            </i>密码长度不能少于6位！
+                            </div>
+                        </li>
+                        <li><label for="confirm-password" class="left">* 确认密码：</label>
+                            <input type="text" id="confirm-password" data-num="2"
+                                   placeholder="再次输入您的登录密码"></li>
+                        <li class="error-tips" >
+                            <div class="nbsp">&nbsp;</div>
+                            <div class="error"><i class="icon icon-error">
+                            </i>确认密码与密码不同！
+                            </div>
+                        </li>
+                        <li><label for="card-list" class="left">* 证件类型：</label>
+                            <select name="" id="card-list">
+                                <option value="1">中国居民身份证</option>
+                                <option value="1">港澳台居民居住证</option>
+                                <option value="C">港澳居民来往内地通行证</option>
+                                <option value="G">台湾居民来往大陆通行证</option>
+                                <option value="B">护照</option>
+                                <option value="H">外国人永久居留身份证</option>
+                            </select></li>
+                        <li><label for="name" class="left">* 姓名：</label>
+                            <input type="text" id="name" data-num="3"
+                                   placeholder="请输入您的姓名">
+                            <span>姓名填写规则 （用于身份核验，请正确填写）</span>
+                        </li>
+                        <li class="error-tips">
+                            <div class="nbsp">&nbsp;</div>
+                            <div class="error"><i class="icon icon-error">
+                            </i>允许输入的字符串在3-30个字符之间！
+                            </div>
+                        </li>
+                        <li><label for="idCard" class="left">* 证件号码：</label>
+                            <input type="text" id="idCard" data-num="4"
+                                   placeholder="请输入你的证件号码"><span>（用于身份核验，请正确填写）</span>
+                        </li>
+                        <li class="error-tips">
+                            <div class="nbsp">&nbsp;</div>
+                            <div class="error"><i class="icon icon-error">
+                            </i>请正确输入18位的证件号码！
+                            </div>
+                        </li>
+                        <li><label for="fuli-list" class="left">* 优待类型：</label>
+                            <select name="" id="fuli-list">
+                                <option value="1">成人</option>
+                                <option value="2">儿童</option>
+                                <option value="3">学生</option>
+                                <option value="4">残疾军人</option>
+                            </select></li>
+                        <li class="line">
+                        </li>
+                        <li><label for="email" class="left">* 邮箱：</label>
+                            <input type="text" id="email" data-num="5" placeholder="请正确填写邮箱地址">
+                        </li>
+                        <li class="error-tips">
+                            <div class="nbsp">&nbsp;</div>
+                            <div class="error"><i class="icon icon-error">
+                            </i>请输入有效的电子邮件地址！
+                            </div>
+                        </li>
+                        <li><label for="phoneNum-list" class="left">* 手机号码：</label>
+                            <div class="phone-select">
+                                <select name="" id="phoneNum-list">
+                                    <option value="1">+86&nbsp;中国</option>
+                                    <option value="2">+852&nbsp;中国香港</option>
+                                    <option value="3">+853&nbsp;中国澳门</option>
+                                    <option value="4">+886&nbsp;中国台湾</option>
+                                </select>
+                                <label for="phoneNum"></label><input type="text" id="phoneNum" data-num="6" placeholder="手机号码"></div>
+                            <div>
+                                <div class="error error-tips"><i class="icon icon-error">
+                                </i>您输入的手机号码不是有效的格式！
+                                </div>
+                                <span>请正确填写手机号码，稍后将向该手机号码发送短信验证码</span>
+                            </div>
+                        </li>
+                        <li >
+                            <div class="checkboxWrapper">
+                                <div class="nbsp">&nbsp;</div>
+                                <input type="checkbox" name="" id="allow"><label for="allow" class="allow-tips">我已阅读并同意遵守
+                                《中国铁路客户服务中心网站服务条款》 《隐私权政策》</label></div>
+                        </li>
+                    </ul>
+                </form>
 
-                <div class="next-wrapper"><a href="javascript:;" id="next-step">下一步</a></div>
+                <div class="next-wrapper"><a href="javascript:;" id="next-step">注册</a></div>
             </div>
 
 
@@ -126,5 +128,6 @@
     </div>
 </div>
 <script src="register.js"></script>
+<script src="../js/jquery-3.6.0.js"></script>
 </body>
 </html>

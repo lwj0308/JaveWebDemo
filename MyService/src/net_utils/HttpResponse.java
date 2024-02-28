@@ -82,7 +82,6 @@ public class HttpResponse {
             }
 
             inputStream.close();
-            outputStream.close();
 
 
         } catch (IOException e) {
@@ -124,7 +123,7 @@ public class HttpResponse {
             outputStream.write(bytes);
             outputStream.flush();
 
-            outputStream.close();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

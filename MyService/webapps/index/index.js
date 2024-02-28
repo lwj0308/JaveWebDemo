@@ -24,7 +24,7 @@ loginMenu.addEventListener('click',(ev)=>{
             location.href = '../login/login.html'
             break
         case '注册':
-            location.href = '../register/register.html.html'
+            location.href = '../register/register.html'
             break
         case '退出':
             sessionStorage.removeItem('username')
@@ -58,5 +58,10 @@ function autoPlay() {
 }
 
 autoPlay()
+const p1 ={id:1,name:'Alice',age:30,hobbies:['sing','dance','draw'],aa:[{id:11,name:'Bob',age:30}]};
+const s = JSON.stringify(p1);
+console.info(s)
+const p2 = JSON.parse(s);
+console.info(p2)
 
 

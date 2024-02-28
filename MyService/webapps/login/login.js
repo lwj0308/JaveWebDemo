@@ -35,13 +35,34 @@ loginBtn.addEventListener('click', (ev) => {
     ev.preventDefault()
     if (inputs[0].value && inputs[1].value) {
         sessionStorage.setItem('username', inputs[0].value)
-        location.href = '../index.html'
-        let form = document.querySelector('form');
-        form.submit()
+        // location.href = '../index.html'
+        // let form = document.querySelector('form');
+        // form.submit()
+        $.ajax({
+            method: "get",
+            url: "/loginIndex",
+            dataType: "text",
+            data: {
+                acc: inputs[0].value,
+                pwd: inputs[1].value
+            },
+            success: response => {
+                if (response=== '登录成功'){
+                    location.href = '../index.html'
+                } else {
+                    alert("登录失败，请检查账号密码")
+                }
+
+                console.log(response)
+            },
+            error: error => {
+                console.log(error)
+            }
+        })
     } else {
         document.querySelector('.login .login-error').classList.add('active')
         // alert('账户、密码不能为空')
-    
+
     }
 
 })
