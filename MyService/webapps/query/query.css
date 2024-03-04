@@ -235,6 +235,23 @@ tr:nth-child(2n) {
     margin-left: 20px;
 }
 
+.page{
+    display: none;
+
+}
+.page.active{
+    display: flex;
+    justify-content: center;
+}
+.page-index{
+    margin: 0 10px ;
+}
+.page-index.active{
+    background-color: #3967FF;
+}
+
+/*登录*/
+
 .login .tab .active {
     color: #3967FF;
 }

@@ -2,20 +2,15 @@ package servlet;
 
 import net_utils.HttpRequest;
 import net_utils.HttpResponse;
-import net_utils.HttpServlet;
 import utils.DatabaseOperations;
 import utils.Logutil;
 
-import javax.print.attribute.standard.PrinterURI;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
 public class RegisterServlet extends HttpServlet {
-    DatabaseOperations databaseOperations;
-    public RegisterServlet(DatabaseOperations databaseOperations) {
-        this.databaseOperations = databaseOperations;
-    }
+
 
     @Override
     public void doPost(HttpRequest request, HttpResponse response) {

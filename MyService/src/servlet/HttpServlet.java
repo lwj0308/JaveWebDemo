@@ -1,7 +1,12 @@
-package net_utils;
+package servlet;
+
+import net_utils.HttpRequest;
+import net_utils.HttpResponse;
+import utils.DatabaseOperations;
 
 public abstract class HttpServlet {
-    public void doGet(HttpRequest request,HttpResponse response){
+    protected DatabaseOperations databaseOperations = DatabaseOperations.getInstance();
+    public void doGet(HttpRequest request, HttpResponse response){
         response.write(String.valueOf(200),"get ok");
 
     }

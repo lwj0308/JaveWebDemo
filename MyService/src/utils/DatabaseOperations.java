@@ -13,7 +13,19 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  */
 public class DatabaseOperations {
     private final DatabaseConnection databaseConnection = new DatabaseConnection();
-    public DatabaseOperations() {
+    private static volatile DatabaseOperations instance;
+
+    public static DatabaseOperations getInstance(){
+        if (instance == null){
+            synchronized (DatabaseOperations.class){
+                if (instance == null){
+                    instance = new DatabaseOperations();
+                }
+            }
+        }
+        return instance;
+    }
+    private DatabaseOperations() {
         databaseConnection.openConnection();
     }
     public ConcurrentLinkedDeque<ResultSet> resultSets = new ConcurrentLinkedDeque<>();

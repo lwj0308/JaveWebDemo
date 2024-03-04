@@ -1,20 +1,35 @@
 package utils;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
- * @description: 配置类
  * @author Linweijun
- * @date 2024/1/2 22:43
  * @version 1.0
+ * @description: 配置类
+ * @date 2024/1/2 22:43
  */
 public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/traindb";//traindb
-    private static final String USER_NAME = "root";
-    private static final String PASSWORD = "root";
+    private static final String URL;
+    private static final String USER_NAME;
+    private static final String PASSWORD;
     private Connection connection;
+
+    static {
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileReader("MyService/config/db.properties"));
+            URL = properties.getProperty("url");
+            USER_NAME = properties.getProperty("username");
+            PASSWORD = properties.getProperty("password");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void openConnection() {
 

@@ -2,7 +2,6 @@ package servlet;
 
 import net_utils.HttpRequest;
 import net_utils.HttpResponse;
-import net_utils.HttpServlet;
 import utils.DatabaseOperations;
 import utils.Logutil;
 
@@ -11,11 +10,6 @@ import java.sql.SQLException;
 import java.util.Map;
 
 public class LoginServlet extends HttpServlet {
-    DatabaseOperations databaseOperations;
-
-    public LoginServlet(DatabaseOperations databaseOperations) {
-        this.databaseOperations = databaseOperations;
-    }
 
     @Override
     public void doGet(HttpRequest request, HttpResponse response) {

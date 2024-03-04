@@ -1,13 +1,5 @@
-import com.alibaba.fastjson2.JSON;
-import dao.JDBCUtils;
-import entity.TrainNumber;
-import entity.User;
 import lombok.extern.java.Log;
 import utils.DatabaseOperations;
-
-import javax.lang.model.element.VariableElement;
-import java.util.ArrayList;
-import java.util.List;
 
 @Log
 public class Main {
@@ -35,7 +27,7 @@ public class Main {
 //        JDBCUtils jdbcUtils = new JDBCUtils();
 //        List<TrainNumber> trainNumbers = jdbcUtils.numberFind(operations, "厦门", "福州");
 //        log.info(trainNumbers.toString());
-        DatabaseOperations databaseOperations = new DatabaseOperations();
+        DatabaseOperations databaseOperations = DatabaseOperations.getInstance();
         int i = databaseOperations.executeUpdate("insert into train_user(username,password) values(?,?)", "123", "pwd");
         System.out.println(i);
     }
