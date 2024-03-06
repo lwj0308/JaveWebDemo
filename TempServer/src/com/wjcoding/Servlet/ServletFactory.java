@@ -1,4 +1,4 @@
-package servlet;
+package com.wjcoding.Servlet;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,9 +17,6 @@ public class ServletFactory {
 
     private ServletFactory() {
         servletMap.put("/loginIndex", new LoginServlet());
-        servletMap.put("/registerIndex", new RegisterServlet());
-        servletMap.put("/trainquery", new TrainNumberServlet());
-        servletMap.put("/train_query_page", new TrainNumberPageServlet());
     }
 
     public HttpServlet getServlet(String url) {

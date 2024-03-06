@@ -1,0 +1,405 @@
+body{
+    min-height: max-content;
+    min-width: max-content;
+}
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    padding: 12px 10px;
+    border: 1px solid blue;
+    border-radius: 10px;
+    margin-top: 50px;
+    font-size: 12px;
+    background-color: #cccccc;
+}
+
+.header .left {
+    width: 80px;
+    margin-right: 20px;
+
+}
+
+.header .left li {
+    border-right: 1px solid #0077aa;
+    padding: 2px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.left input {
+    vertical-align: -1px;
+    margin-right: 5px;
+}
+
+.header .middle {
+    flex: 1;
+}
+
+.header .middle ul {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.header .middle ul li {
+    display: flex;
+    align-items: center;
+}
+
+.header .middle ul label {
+    margin-right: 5px;
+}
+
+.header .middle ul input {
+    height: 30px;
+}
+
+.header .right {
+    display: flex;
+    width: 250px;
+    align-items: center;
+}
+
+.header .right ul {
+    padding: 0 15px;
+    border-left: 1px solid #0077aa;
+}
+
+.header .right a {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    background-color: gold;
+    line-height: 30px;
+    text-align: center;
+    margin-left: 50px;
+    border-radius: 10px;
+}
+
+.select {
+    margin-top: 30px;
+}
+
+.hd ul {
+    display: flex;
+    height: 40px;
+}
+
+.hd ul li {
+    flex: 1;
+    color: white;
+    background-color: lightgray;
+}
+
+.hd ul li a {
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid gray;
+}
+
+.hd ul li a:hover {
+    width: 400px;
+    border-bottom: none;
+    border-top: 1px solid rgb(41, 140, 206);
+    border-left: 1px solid rgb(41, 140, 206);
+    border-right: 1px solid rgb(41, 140, 206);
+    background-color: #fff;
+    color: #3967FF;
+}
+
+.bd {
+    padding: 10px;
+    border-left: 1px solid rgb(41, 140, 206);
+    border-right: 1px solid rgb(41, 140, 206);
+    border-bottom: 1px solid rgb(41, 140, 206);
+}
+
+.bd_container {
+    display: flex;
+    height: 30px;
+    font-size: 12px;
+    align-items: center;
+
+}
+
+.bd ul {
+    display: flex;
+    align-items: center;
+}
+
+.bd li {
+    width: 95px;
+    margin-left: 10px;
+
+}
+
+.bd li input {
+    margin-right: 4px;
+    vertical-align: -3px;
+}
+
+.bd span {
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #b8daff;
+}
+
+.bd .active {
+    background: rgb(41, 140, 206);
+}
+
+table.wrapper {
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    height: 70px;
+    font-size: 12px;
+    border: 1px solid rgb(34, 133, 199);
+    color: white;
+    background: rgb(34, 133, 199);
+    position: sticky;
+    top: -1px;
+}
+
+th {
+    border-right: 1px solid wheat;
+}
+
+td {
+    text-align: center;
+    border: 1px solid #8884ec;
+}
+
+tbody .td_1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.td_1 div {
+    flex: 1;
+    text-align: center;
+}
+
+
+.td_1 div:nth-child(2) {
+    text-align: left;
+}
+
+tr:nth-child(2n) {
+    background: #dbd9fa;
+
+}
+
+.ticket-change-show-box {
+    padding: 25px;
+    border: 1px solid #298cce;
+    border-top: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ticket-station {
+    font-size: 20px;
+    font-weight: 700
+}
+
+.ticket-change {
+    display: inline-block;
+    margin: 0 45px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #dedede;
+    border-radius: 14px;
+    padding: 0 15px;
+    color: #348ff3;
+    position: relative;
+    font-weight: 500;
+
+}
+
+.ticket-more{
+    color: #348ff3;
+    margin-left: 20px;
+}
+
+.page{
+    display: none;
+
+}
+.page.active{
+    display: flex;
+    justify-content: center;
+}
+.page-index{
+    margin: 0 10px ;
+}
+.page-index.active{
+    background-color: #3967FF;
+}
+
+/*登录*/
+
+.login .tab .active {
+    color: #3967FF;
+}
+.login .login-bd{
+    display: none;
+}
+.login .login-bd.active {
+    display: block;
+    color: #3967FF;
+}
+.login .tab {
+    height: 78px;
+    line-height: 78px;
+    padding: 0 30px;
+}
+
+.login .login-wrapper {
+    padding: 0 30px 15px 30px;
+}
+
+.login .login-wrapper .tab ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.login .login-wrapper ul li {
+    text-align: center;
+}
+
+.login .login-wrapper .wrapper {
+    width: 100%;
+
+    height: 44px;
+    margin-bottom: 16px;
+    border: 1px solid #8A8A8A;
+    border-radius: 22px;
+}
+
+.login label{
+    display: flex;
+    width: 100%;
+    color: #dadada;
+
+}
+.login .wrapper label i {
+    margin: 0 10px;
+    line-height: 44px;
+}
+
+.login .login-wrapper input {
+    flex: 1;
+    border: none;
+    background-color: transparent;
+    padding-right: 15px;
+
+    margin: 0 10px;
+    line-height: 44px;
+}
+
+.login .login-error {
+    display: none;
+    padding: 7px;
+    color: red;
+    margin-top: -16px;
+    line-height: 20px;
+}
+.login .login-error.active {
+    display: block;
+}
+
+.login .login-btn {
+    display: block;
+    background: #ff8000;
+    color: #fff;
+    border-color: #ff8000;
+    border-radius: 6px;
+    height: 44px;
+    line-height: 34px;
+    padding: 4px 10px;
+    text-align: center;
+}
+
+.login .login-txt {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 20px;
+
+}
+
+.login .login-txt {
+    color: #999;
+}
+
+.login a:hover {
+    color: #3967FF;
+}
+
+.login .footer {
+    padding: 10px 20px 15px;
+    font-size: 13px;
+    color: #666;
+    border-top: 1px solid #dedede;
+}
+
+.login .login-bd img{
+    display: block;
+    width: 200px;
+    margin: 30px auto;
+}
+
+.login .close{
+    background-color: #d0cabc;
+    text-align: right;
+    border-radius: 5px 5px 0 0;
+    padding-right: 5px;
+}
+.login .close i{
+    font-size: 30px;
+}
+
+.shield{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 998;
+}
+
+.login {
+    display: none;
+    width: 380px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 5px;
+    z-index: 999;
+
+}
+.shield.active,
+.login.active{
+    display: block;
+}
