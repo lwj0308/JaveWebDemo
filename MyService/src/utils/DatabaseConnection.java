@@ -1,5 +1,7 @@
 package utils;
 
+import lombok.Getter;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,6 +15,7 @@ import java.util.Properties;
  * @description: 配置类
  * @date 2024/1/2 22:43
  */
+@Getter
 public class DatabaseConnection {
     private static final String URL;
     private static final String USER_NAME;
@@ -38,10 +41,6 @@ public class DatabaseConnection {
         } catch (SQLException e) {
             Logutil.getInstance().getLogger().severe(e.getMessage());
         }
-    }
-
-    public Connection getConnection() {
-        return connection;
     }
 
     public void closeConnection() {

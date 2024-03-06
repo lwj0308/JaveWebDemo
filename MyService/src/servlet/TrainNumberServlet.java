@@ -1,10 +1,12 @@
 package servlet;
 
+import annotation.WebServlet;
 import com.alibaba.fastjson2.JSON;
 
 import dao.TrainNumberDao;
 import dao.impl.TrainNumberDaoIml;
 import dto.ResponseDTO;
+import entity.Page;
 import entity.TrainNumber;
 import net_utils.HttpRequest;
 import net_utils.HttpResponse;
@@ -12,6 +14,7 @@ import net_utils.HttpResponse;
 import java.util.List;
 import java.util.Map;
 
+@WebServlet("/trainquery")
 public class TrainNumberServlet extends HttpServlet {
 
     @Override
@@ -22,7 +25,9 @@ public class TrainNumberServlet extends HttpServlet {
         String end = params.get("end");
         String page = params.get("page");
         TrainNumberDao trainNumberDao = new TrainNumberDaoIml();
-        List<TrainNumber> trainNumbers = trainNumberDao.find(start,end,page);
+        Page<TrainNumber> trainNumbers = trainNumberDao.find(start,end,page);
+        trainNumbers.setPageIndex(Integer.parseInt(page
+        ));
         ResponseDTO responseDTO = new ResponseDTO(200, "查询成功", trainNumbers);
         String jsonString = JSON.toJSONString(responseDTO);
         response.write("200",jsonString);

@@ -1,14 +1,18 @@
 package net_utils;
 
+import lombok.Data;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-
+@Data
 public class HttpResponse {
     private String stateLine = "HTTP/1.1 200 OK";
 
@@ -16,18 +20,19 @@ public class HttpResponse {
 
     private String content;
 
-    private final OutputStream outputStream;
+    private final SocketChannel channel;
 
-    public HttpResponse(OutputStream outputStream) {
+    public HttpResponse(SocketChannel channel) {
         headers.put("Content-Type", "text/html");
         headers.put("Date", new Date() + "");
         headers.put("Server", "JavaServer/1.1");
         headers.put("Content-Length", "0");
-        this.outputStream = outputStream;
+        this.channel = channel;
     }
 
     /**
      * 输出文件
+     *
      * @param file
      */
     public void write(File file) {
@@ -54,6 +59,9 @@ public class HttpResponse {
             case "jpg":
                 headers.put("Content-Type", "image/jpeg");
                 break;
+            case "ico":
+                headers.put("Content-Type", "image/x-icon");
+                break;
             default:
                 headers.put("Content-Type", "application/octet-stream");
         }
@@ -69,16 +77,21 @@ public class HttpResponse {
         stringBuilder.append("\r\n");
 
         byte[] bytes = stringBuilder.toString().getBytes();
+
+        ByteBuffer wrap = ByteBuffer.wrap(bytes);
         try {
-            outputStream.write(bytes);
-            outputStream.flush();
+            channel.write(wrap);
 
             //读取文件内容并写入输出流
             FileInputStream inputStream = new FileInputStream(file);
             byte[] bytes1 = new byte[1024];
-            while (inputStream.read(bytes1) != -1) {
-                outputStream.write(bytes1);
-                outputStream.flush();
+            ByteBuffer allocate = ByteBuffer.allocate(1024);
+            int len;
+            while ((len = inputStream.read(bytes1)) != -1) {
+                allocate.put(bytes1, 0, len);
+                allocate.flip();
+                channel.write(allocate);
+                allocate.clear();
             }
 
             inputStream.close();
@@ -92,6 +105,7 @@ public class HttpResponse {
 
     /**
      * 处理业务
+     *
      * @param code
      * @param data
      */
@@ -102,7 +116,7 @@ public class HttpResponse {
         if (Objects.equals(code, "404")) {
             stateLine = "HTTP1/1 404 Not Found";
 
-        } else if (Objects.equals(code,"200")){
+        } else if (Objects.equals(code, "200")) {
             stateLine = "HTTP/1.1 200 OK";
         }
 
@@ -119,9 +133,11 @@ public class HttpResponse {
         stringBuilder.append("\r\n");
 
         try {
-            outputStream.write(stringBuilder.toString().getBytes());
-            outputStream.write(bytes);
-            outputStream.flush();
+            ByteBuffer wrap = ByteBuffer.wrap(stringBuilder.toString().getBytes());
+            channel.write(wrap);
+            wrap = ByteBuffer.wrap(bytes);
+            channel.write(wrap);
+
 
 
         } catch (IOException e) {

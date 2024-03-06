@@ -1,25 +1,23 @@
 package service;
 
+import lombok.extern.java.Log;
 import net_utils.HttpRequest;
 import net_utils.HttpResponse;
-import utils.DatabaseOperations;
+import servlet.HttpServlet;
 import utils.Logutil;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Map;
+import java.nio.channels.*;
+import java.util.Iterator;
+import java.util.Set;
 
-public class LinkThread extends Thread{
-    private final ServerSocket serverSocket;
+@Log
+public class LinkThread extends Thread {
+    private final Selector selector;
 
-    public LinkThread(ServerSocket serverSocket) {
-        this.serverSocket = serverSocket;
+    public LinkThread(Selector selector) {
+        this.selector = selector;
     }
 
     @Override
@@ -27,8 +25,25 @@ public class LinkThread extends Thread{
 
         while (true) {
             try {
-                Socket accept = serverSocket.accept();
-                new HandleThread(accept).start();
+                selector.select();//轮询
+                Set<SelectionKey> selectionKeys = selector.selectedKeys();//获取就绪的IO事件
+                Iterator<SelectionKey> iterator = selectionKeys.iterator();
+                while (iterator.hasNext()) {
+                    SelectionKey next = iterator.next();
+                    iterator.remove();//移除当前的key，防止重复操作
+                    if (next.isAcceptable()){
+                        ServerSocketChannel serverSocketChannel = (ServerSocketChannel) next.channel();
+                        SocketChannel socketChannel = serverSocketChannel.accept();
+                        socketChannel.configureBlocking(false);
+                        socketChannel.register(selector, SelectionKey.OP_READ);
+                    }else if (next.isReadable()){
+                        SocketChannel channel = (SocketChannel) next.channel();//拿到socket
+                        if (!channel.isConnected()) return;
+                        HttpRequest httpRequest = new HttpRequest(channel);
+                        HttpResponse httpResponse = new HttpResponse(channel);
+                        ThreadPoolManage.getInstance().execute(new TaskThread(httpRequest,httpResponse));
+                    }
+                }
             } catch (IOException e) {
               Logutil.getInstance().getLogger().warning(e.getMessage());
               break;

@@ -1,5 +1,7 @@
 package utils;
 
+import lombok.extern.java.Log;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +13,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  * @date 2024/1/2 22:47
  * @version 1.0
  */
+@Log
 public class DatabaseOperations {
     private final DatabaseConnection databaseConnection = new DatabaseConnection();
     private static volatile DatabaseOperations instance;
@@ -45,6 +48,7 @@ public class DatabaseOperations {
             resultSets.add(resultSet);
             return resultSet;
         } catch (SQLException e) {
+            closePC();
             throw new RuntimeException(e);
         }
     }
@@ -61,6 +65,7 @@ public class DatabaseOperations {
             }
             return statement.executeUpdate();
         } catch (SQLException e) {
+            closePC();
             throw new RuntimeException(e);
         }
     }

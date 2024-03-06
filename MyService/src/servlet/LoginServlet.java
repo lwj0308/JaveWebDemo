@@ -1,5 +1,6 @@
 package servlet;
 
+import annotation.WebServlet;
 import net_utils.HttpRequest;
 import net_utils.HttpResponse;
 import utils.DatabaseOperations;
@@ -9,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
+@WebServlet("/loginIndex")
 public class LoginServlet extends HttpServlet {
 
     @Override

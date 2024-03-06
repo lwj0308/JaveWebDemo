@@ -1,25 +1,28 @@
 const ckAll = document.querySelectorAll('.ck_all');
 
+//全部车站
 ckAll.forEach(item => {
     const ul = item.nextElementSibling;
-    const cks = ul.querySelectorAll('input');
+
     item.addEventListener('click', () => {
         item.classList.toggle('active')
+        const cks = ul.querySelectorAll('input');
         cks.forEach((item) => {
             item.checked = item.classList.toggle('active')
         })
     })
-    cks.forEach((ck) => {
-        ck.addEventListener('click', () => {
 
-            if (ul.querySelectorAll('.ck:checked').length === cks.length) {
-                item.classList.add('active')
-            } else {
-                item.classList.remove('active')
-            }
-
-        })
-    })
+    // cks.forEach((ck) => {
+    //     ck.addEventListener('click', () => {
+    //
+    //         if (ul.querySelectorAll('.ck:checked').length === cks.length) {
+    //             item.classList.add('active')
+    //         } else {
+    //             item.classList.remove('active')
+    //         }
+    //
+    //     })
+    // })
 
 })
 
@@ -45,20 +48,20 @@ document.querySelector('.login .tab ul').addEventListener('click', (e) => {
     }
 });
 
-let page_index = 1;
+let currentPageIndex = 1;
 let page_total;
 document.querySelector(".page-pre").addEventListener('click', () => {
-    page_index--
-    if (page_index < 1) {
-        page_index = 1
+    currentPageIndex--
+    if (currentPageIndex < 1) {
+        currentPageIndex = 1
     }
     query()
 })
 document.querySelector(".page-next").addEventListener('click', () => {
-    page_index++;
+    currentPageIndex++;
     console.log('next')
-    if (page_index > page_total) {
-        page_index = page_total
+    if (currentPageIndex > page_total) {
+        currentPageIndex = page_total
     }
     query()
 })
@@ -73,9 +76,18 @@ document.getElementById('query_car').addEventListener('click', () => {
     }
 })
 
-function query() {
-    const start = document.querySelector("input[name='start']");
-    const end = document.querySelector("input[name='end']");
+function query(startStation, endStation) {
+    let start = '';
+    let end = '';
+
+
+    if (!startStation) {
+        start = document.querySelector("input[name='start']");
+    }
+    if (!endStation) {
+        end = document.querySelector("input[name='end']");
+    }
+
     $.ajax({
         method: "get",
         url: "/trainquery",
@@ -83,20 +95,25 @@ function query() {
         data: {
             start: start.value,
             end: end.value,
-            page: page_index
+            page: currentPageIndex
         },
         success: function (result) {
             const {code, data, message} = result
             console.info(code)
-            console.info(data)//数组
+            console.info(data)//对象page
             console.info(message)
             if (result.code === 200) {
                 let str = '';
-                const endStationSet = new Set()
-                for (let i = 0; i < data.length; i++) {
+                const startStationSet = new Set()//车站
+                const endStationSet = new Set()//车站
 
-                    const {endStationid, startStationid, num, starttime, endtime} = data[i]
+                const {pageCount, pageSize, item} = data
+                page_total = pageCount
+                for (let i = 0; i < item.length; i++) {
+
+                    const {endStationid, startStationid, num, starttime, endtime} = item[i]
                     endStationSet.add(endStationid)
+                    startStationSet.add(startStationid)
                     str += `
     <tr>
             <td colspan="4">
@@ -158,34 +175,29 @@ function query() {
         </tr>
 `;
                 }
-                const body = document.querySelector('.train_body');
+                document.querySelector('.train_body').innerHTML = str
+                //处理车站
                 const start_station = document.querySelector('.start_station');
                 const end_station = document.querySelector('.end_station');
-                body.innerHTML = str
-                const ck = document.createElement('input');
-                ck.setAttribute('type', 'checkbox')
-                ck.classList.add('ck')
-                ck.innerHTML = result.data[0].startStationid
-                // start_station.innerHTML = `
-                //      <li>
-                //     <input type="checkbox" name="" class="ck">${result.data[0].startStationid}
-                // </li> `
-                let endStr=''
-                endStationSet.forEach((item) =>{
-                //     endStr+= `
-                //      <li>
-                //     <input type="checkbox" name="" class="ck">${item}
-                // </li>`
-                    const ck = document.createElement('input');
-                    ck.setAttribute('type', 'checkbox')
-                    ck.classList.add('ck')
-                    ck.innerHTML = item
-                    ck.addEventListener()
-                    end_station.append(ck)
 
+                let startStationText = "";
+                startStationSet.forEach((item) => {
+                    startStationText += `
+                         <li>
+                        <input type="checkbox" name="" class="ck" onclick="ckStartStationClick(1,this)" value=${item} >${item}
+                    </li>`
                 })
-                // end_station.innerHTML =endStr
-
+                start_station.innerHTML = startStationText
+                let endStationText = "";
+                endStationSet.forEach((item) => {
+                    endStationText += `
+                         <li>
+                        <input type="checkbox" name="" class="ck" onclick="ckStartStationClick(2,this)" value=${item}>${item}
+                    </li>`
+                })
+                end_station.innerHTML = endStationText
+                //分页导航
+                changePage(pageCount)
 
             } else if (data.code === 400) {
 
@@ -197,44 +209,55 @@ function query() {
         }
     })
 
-    if (!page_total) {
-        $.ajax({
-            method: 'get', url: '/train_query_page', dataType: 'json', data: {
-                start: start.value,
-                end: end.value
-            },
-            success: function (data) {
-
-                page_total = Math.ceil(data.data / 5)
-
-                changePage()
-
-            }, error: function (data) {
-
-            }
-        })
-    } else {
-        changePage()
-    }
 }
 
-function changePage(){
+//车站点击事件
+function ckStartStationClick(startOrEnd, obj) {
+    const ul = ckAll[startOrEnd].nextElementSibling;
+    if (ul.querySelectorAll('.ck:checked').length === ul.children.length) {
+        ckAll[startOrEnd].classList.add('active')
+    } else {
+        ckAll[startOrEnd].classList.remove('active')
+    }
+    if (obj.checked) {
+        if (startOrEnd === 1) {
+            query(obj.value)
+        } else if (startOrEnd === 2) {
+            query('', obj.value)
+        }
+    }
+
+
+}
+
+function changePage(pageCount) {
     let str = ``;
 
-    for (let i = 0; i < page_total; i++) {
-        if (page_index === i + 1) {
-            str += `<a href="javascript:;" class="page-index active">${i + 1}</a>`
+    for (let i = 1; i <= pageCount; i++) {
+        if (currentPageIndex === i) {
+            str += `<a href="javascript:;" class="page-index active" onclick="getPageByIndex(${i})">${i}</a>`
 
         } else {
-            str += `<a href="javascript:;" class="page-index">${i + 1}</a>`
+            str += `<a href="javascript:;" class="page-index" onclick="getPageByIndex(${i})">${i}</a>`
         }
 
     }
     document.querySelector('.page').classList.add('active')
     document.querySelector('.page_wrapper').innerHTML = str
     console.log(page_total)
-    console.log(page_index)
+    console.log(currentPageIndex)
 }
+
+function getPageByIndex(index) {
+    currentPageIndex = index
+    query()
+}
+
+//查询出发车站
+function queryStartStationId(startStationId) {
+    query()
+}
+
 
 document.querySelector('.login .close i').addEventListener('click', () => {
 
